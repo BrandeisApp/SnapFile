@@ -37,3 +37,5 @@ lepozepo:s3
 cfs:standard-packages
 cfs:s3
 cfs:gridfs
+http 
+aldeed:http
