@@ -1,5 +1,5 @@
 Meteor.startup(function(){
-  console.log("starting up the client!");
+  //console.log("starting up the client!");
 
   //Meteor.absoluteUrl.defaultOptions.rootUrl = 'http://leiner.cs-i.brandeis.edu:3000/';
 });
@@ -21,4 +21,4 @@ Template.registerHelper('userEmail',
 
 // this allows the client access to all the user information
 // this should be removed when the app is deployed
-Meteor.subscribe('userList');
+
