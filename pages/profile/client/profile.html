@@ -1,0 +1,23 @@
+<template name="profile">
+<table class="table table-striped">
+	<tbody>
+	<tr>
+	<td> <h3>Username</h3></td>
+	
+	{{#if caneditusername}}
+	<td><center><input class="form-control" value="{{username}}" id="newusername"></center></td>
+	<td><button class="btn-warning btn-block" id="doneusername"><h3>done</h3></button></td>
+	{{else}}
+	<td><center><h3>{{username}}</h3></center></td>
+	<td><button class="btn-warning btn-block" id="editusername"><h3>edit</h3></button></td>
+	{{/if}}
+	</tr>
+	<tr>
+	<td><h3>Email</h3></td>
+	<td><center><h3>{{email}}</h3></center></td>
+	
+	</tr>
+	</tbody>
+</table>	
+
+</template>
