@@ -34,3 +34,6 @@ less
 fezvrasta:bootstrap-material-design
 ostrio:files
 lepozepo:s3
+cfs:standard-packages
+cfs:s3
+cfs:gridfs
