@@ -30,6 +30,7 @@ ecmascript-runtime@0.2.11_1
 ejson@1.0.12
 email@1.0.14_1
 fastclick@1.0.12
+fezvrasta:bootstrap-material-design@0.5.9
 geojson-utils@1.0.9
 google@1.1.13
 hot-code-push@1.0.4
