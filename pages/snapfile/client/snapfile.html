@@ -1,0 +1,8 @@
+<template name="s3Tester">
+    <input type="file" class="myFileInput">
+    <button class="upload">Upload</button>
+
+    {{#each files}}
+        <p>{{percent_uploaded}}</p>
+    {{/each}}
+</template>
