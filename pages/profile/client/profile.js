@@ -27,7 +27,7 @@ Template.profile.events({
 	'click #donefirstname':function(){
 		var toinsert = Profile.find({userId:Meteor.userId()}).fetch()[0]
 		toinsert.firstname= $("#newfirstname").val()
-		toinsert.fullname = (toinsert.firstname + toinsert.lastname);
+		toinsert.fullname = (toinsert.firstname +" "+ toinsert.lastname);
 		Profile.update({_id:toinsert._id},toinsert)
 		Session.set("caneditfirstname",false)
 
