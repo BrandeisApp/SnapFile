@@ -2,6 +2,11 @@
 <table class="table table-striped">
 	<tbody>
 	<tr>
+	<td><h3>Email</h3></td>
+	<td><center><h3>{{email}}</h3></center></td>
+	
+	</tr>
+	<tr>
 	<td> <h3>Username</h3></td>
 	
 	{{#if caneditusername}}
@@ -13,9 +18,26 @@
 	{{/if}}
 	</tr>
 	<tr>
-	<td><h3>Email</h3></td>
-	<td><center><h3>{{email}}</h3></center></td>
+	<td> <h3>First Name</h3></td>
 	
+	{{#if caneditfirstname}}
+	<td><center><input class="form-control" value="{{firstname}}" id="newfirstname"></center></td>
+	<td><button class="btn-warning btn-block" id="donefirstname"><h3>done</h3></button></td>
+	{{else}}
+	<td><center><h3>{{firstname}}</h3></center></td>
+	<td><button class="btn-warning btn-block" id="editfirstname"><h3>edit</h3></button></td>
+	{{/if}}
+	</tr>
+	<tr>
+	<td> <h3>Last Name</h3></td>
+	
+	{{#if caneditlastname}}
+	<td><center><input class="form-control" value="{{lastname}}" id="newlastname"></center></td>
+	<td><button class="btn-warning btn-block" id="donelastname"><h3>done</h3></button></td>
+	{{else}}
+	<td><center><h3>{{lastname}}</h3></center></td>
+	<td><button class="btn-warning btn-block" id="editlastname"><h3>edit</h3></button></td>
+	{{/if}}
 	</tr>
 	</tbody>
 </table>	
