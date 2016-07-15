@@ -1,4 +1,4 @@
-Images.deny({
+StoredFiles.deny({
  insert: function(){
  return false;
  },
@@ -13,7 +13,7 @@ Images.deny({
  }
  });
 
-Images.allow({
+StoredFiles.allow({
  insert: function(){
  return true;
  },
@@ -27,24 +27,26 @@ Images.allow({
  return true;
  }
 });
-Template.s3Tester.events({
+Template.upload.events({
    'change .myFileInput': function(event, template) {
       FS.Utility.eachFile(event, function(file) {
-        Images.insert(file, function (err, fileObj) {
+        StoredFiles.insert(file, function (err, fileObj) {
           if (err){
              // handle error
           } else {
              // handle success depending what you need to do
             var userId = Meteor.userId();
-            var imagesURL = {
-              "profile.image": "/cfs/files/images/" + fileObj._id
+            var fileURL = {
+              "fileinput.storedfile": "/cfs/files/storedfiles/" + fileObj._id
             };
-            Meteor.users.update(userId, {$set: imagesURL});
+            Meteor.users.update(userId, {$set: fileURL});
+            prompt("Success! Your code is: " + (fileObj._id) + ", copy it below!", (fileObj._id));
           }
         });
      });
    }
 });
+
 if (Meteor.isServer) {
-    Meteor.publish("images", function(){ return Images.find(); });
+    Meteor.publish("storedfiles", function(){ return StoredFiles.find(); });
 };
