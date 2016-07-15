@@ -1,0 +1,49 @@
+<template name="friendslist">
+	<a href="{{pathFor 'addfriend'}}">
+	<button class="btn-block btn-warning">
+	 <h4> Add Friend</h4>	
+	</button> </a>
+<table class="table table-striped">
+	<tbody>
+{{#each friends}}
+{{>friendsrow}}
+{{/each}}
+
+
+
+
+
+
+
+
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+</template>
+<template name="friendsrow">
+<tr>
+<td>{{fullname}}</td>	
+<td>{{usernmae}}</td>
+
+
+</tr>
+	
+
+
+
+
+
+
+
+
+
+
+</template>
