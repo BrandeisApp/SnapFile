@@ -27,8 +27,11 @@ Template.profile.events({
 	'click #donefirstname':function(){
 		var toinsert = Profile.find({userId:Meteor.userId()}).fetch()[0]
 		toinsert.firstname= $("#newfirstname").val()
+		toinsert.fullname = (toinsert.firstname +" "+ toinsert.lastname);
 		Profile.update({_id:toinsert._id},toinsert)
 		Session.set("caneditfirstname",false)
+
+		
 	},
 	'click #editlastname':function(){
 		
@@ -39,6 +42,8 @@ Template.profile.events({
 	'click #donelastname':function(){
 		var toinsert = Profile.find({userId:Meteor.userId()}).fetch()[0]
 		toinsert.lastname= $("#newlastname").val()
+		toinsert.fullname = (toinsert.firstname +" "+ toinsert.lastname);
+		console.log(toinsert)
 		Profile.update({_id:toinsert._id},toinsert)
 		Session.set("caneditlastname",false)
 	}
