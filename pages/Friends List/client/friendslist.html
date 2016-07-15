@@ -5,6 +5,7 @@
 	</button> </a>
 <table class="table table-striped">
 	<tbody>
+<tr><th><h3><b>Full Name</b></h3></th><th><h3><b>Username</b></h3></th></tr>
 {{#each friends}}
 {{>friendsrow}}
 {{/each}}
@@ -30,8 +31,8 @@
 </template>
 <template name="friendsrow">
 <tr>
-<td>{{fullname}}</td>	
-<td>{{username}}</td>
+<td><h3>{{fullname}}</h3></td>	
+<td><h3>{{username}}</h3></td>
 
 
 </tr>
