@@ -37,7 +37,7 @@ Template.upload.events({
              // handle success depending what you need to do
             var userId = Meteor.userId();
             var fileURL = {
-              "fileinput.storedfile": "/cfs/files/storedfiles/" + fileObj._id
+              "fileinput.storedfile": "/cfs/files/storedfiles/" + fileObj._id + fileObj.original.name
             };
             Meteor.users.update(userId, {$set: fileURL});
             prompt("Success! Your code is: " + (fileObj._id) + ", copy it below!", (fileObj._id));
