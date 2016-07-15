@@ -1,11 +1,22 @@
 <template name="friendslist">
+	<!-- button and link to the add friends page-->
 	<a href="{{pathFor 'addfriend'}}">
 	<button class="btn-block btn-warning">
 	 <h4> Add Friend</h4>	
 	</button> </a>
+	<!-- creating the table-->
 <table class="table table-striped">
 	<tbody>
-<tr><th><h3><b>Full Name</b></h3></th><th><h3><b>Username</b></h3></th></tr>
+	<!-- table headings-->
+<tr>
+	<th>
+		<h3><b>Full Name</b></h3>
+	</th>
+	<th>
+	<h3><b>Username</b></h3>
+	</th>
+</tr>
+<!-- creates a template of friends row for each of your friends-->
 {{#each friends}}
 {{>friendsrow}}
 {{/each}}
@@ -30,7 +41,9 @@
 
 </template>
 <template name="friendsrow">
+<!-- creates new row of two elements of the full name and then the username-->
 <tr>
+<!-- pulls a fullname and username value from profile-->
 <td><h3>{{fullname}}</h3></td>	
 <td><h3>{{username}}</h3></td>
 

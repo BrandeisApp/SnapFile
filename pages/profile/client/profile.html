@@ -1,48 +1,71 @@
 <template name="profile">
+	<!-- creates the table-->
 <table class="table table-striped">
+
 	<tbody>
+	<!--Email locked term -->
 	<tr>
 	<td><h3>Email</h3></td>
 	<td><center><h3>{{email}}</h3></center></td><td></td>
-	
+	<!--Friend code locked term -->
 	</tr>
 	<tr>
 	<td><h3>Friend Code</h3></td>
 	<td><center><h3>{{userId}}</h3></center></td><td></td>
 	
 	</tr>
-
+	<!-- edittable username-->
 	<tr>
 	<td> <h3>Username</h3></td>
-	
+	<!-- checks from js if username is edittable-->
 	{{#if caneditusername}}
-	<td><center><input class="form-control" value="{{username}}" id="newusername"></center></td>
-	<td><button class="btn-warning btn-block" id="doneusername"><h3>done</h3></button></td>
+	<!-- if it is edittable -->
+	<!-- creates the edittable with the starting value of the old username-->
+	<td><center><input class="form-control text-center largeinput" value="{{username}}" id="newusername"></center></td>
+	<!-- button submits the new username to the server-->
+	<td><button class="btn-raised btn btn-block btn-warning" id="doneusername"><h3>done</h3></button></td>
 	{{else}}
+	<!-- if it is not edittable-->
+	<!-- shows the username-->
 	<td><center><h3>{{username}}</h3></center></td>
-	<td><button class="btn-warning btn-block" id="editusername"><h3>edit</h3></button></td>
+	<!-- changes to edit mode -->
+	<td><button class="btn-raised btn btn-block btn-warning" id="editusername"><h3>edit</h3></button></td>
 	{{/if}}
 	</tr>
+	<!-- edittable first name -- >
 	<tr>
 	<td> <h3>First Name</h3></td>
-	
+	<!-- checks from js username is edittable-->
 	{{#if caneditfirstname}}
-	<td><center><input class="form-control" value="{{firstname}}" id="newfirstname"></center></td>
-	<td><button class="btn-warning btn-block" id="donefirstname"><h3>done</h3></button></td>
+	<!-- if it is edittable-->
+	<!-- creates the edittable with the starting value of the old first name-->
+	<td><center><input class="form-control text-center largeinput" value="{{firstname}}" id="newfirstname"></center></td>
+	<!-- button submits the new first name to the server-->
+	<td><button class="btn-raised btn btn-block btn-warning" id="donefirstname"><h3>done</h3></button></td>
 	{{else}}
+	<!-- if it is not edittable-->
+	<!-- shows the firstname-->
 	<td><center><h3>{{firstname}}</h3></center></td>
-	<td><button class="btn-warning btn-block" id="editfirstname"><h3>edit</h3></button></td>
+	<!-- changes to edit mode -->
+	<td><button class="btn-raised btn btn-block btn-warning" id="editfirstname"><h3>edit</h3></button></td>
 	{{/if}}
 	</tr>
+	<!-- edittable last name -- >
 	<tr>
 	<td> <h3>Last Name</h3></td>
-	
+	<!-- checks from js username is edittable-->
 	{{#if caneditlastname}}
-	<td><center><input class="form-control" value="{{lastname}}" id="newlastname"></center></td>
-	<td><button class="btn-warning btn-block" id="donelastname"><h3>done</h3></button></td>
+	<!-- if it is edittable-->
+	<!-- creates the edittable with the starting value of the old last name-->
+	<td><center><input class="form-control text-center largeinput" value="{{lastname}}" id="newlastname"></center></td>
+	<!-- button submits the new first name to the server-->
+	<td><button class="btn-raised btn btn-block btn-warning" id="donelastname"><h3>done</h3></button></td>
 	{{else}}
+	<!-- if it is not edditable-->
+	<!-- shows the firstname-->
 	<td><center><h3>{{lastname}}</h3></center></td>
-	<td><button class="btn-warning btn-block" id="editlastname"><h3>edit</h3></button></td>
+	<!-- changes to edit mode -->
+	<td><button class="btn-raised btn btn-block btn-warning" id="editlastname"><h3>edit</h3></button></td>
 	{{/if}}
 	</tr>
 	</tbody>
