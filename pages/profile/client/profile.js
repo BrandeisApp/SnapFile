@@ -71,9 +71,14 @@ Template.profile.helpers({
 	},
 	lastname:function(){
 		return Profile.find({userId:Meteor.userId()}).fetch()[0].lastname
-	}
+	},
+	userId:function(){
+		var userId = Meteor.userId()
+		userId = userId.split("")
+		userId[5]='`'
+		userId= userId.join("")
 
-})
-Template.profile.events({
+		return userId.split("`")[0];
+	}
 
 })

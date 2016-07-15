@@ -1,8 +1,13 @@
 Meteor.methods({
 	profileinsert:function (user) {
 		if(Profile.find({userId:user}).fetch().length == 0) {
+			var friendcode = user.split("")
+			friendcode[5]="`"
+			friendcode=friendcode.join('')
+			friendcode=friendcode.split('`')[0]
+
 			email = Meteor.users.find({_id:Meteor.userId()}).fetch()[0].emails[0].address
-			Profile.insert({userId:user, email:email, verified:false, username:email.split("@")[0], firstname:"", lastname:"", fullname:""})
+			Profile.insert({userId:user, email:email, verified:false, username:email.split("@")[0], firstname:"", lastname:"", fullname:"",friendcode:friendcode})
 		}
 	}
 })
