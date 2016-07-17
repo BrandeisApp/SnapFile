@@ -2,7 +2,10 @@
 <h1>Feedback</h1>
 
   {{#if currentUser}}
-    <input type="text"  class="js-chatinput" >
+    <div class="rating">
+    <span>&#9734;</span><span>&#9734;</span><span>&#9734;</span><span>&#9734;</span><span>&#9734;</span>
+    </div>
+    <textarea rows="10" cols="30" class="js-chatinput"></textarea>
     <br>
     <button class="btn btn-info btn-large js-chatsubmit">Submit</button>
     <hr>
