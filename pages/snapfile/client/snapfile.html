@@ -1,3 +1,27 @@
 <template name="upload">
-    <input type="file" class="myFileInput" value="Upload or drag file here!">
+	<div style="text-align:center">
+	<h1 class="">Add File</h1>
+  	 <center><input class="myFileInput" type="file" value="Upload or drag file here!"></center>
+    </div>
+
+    <h1 class="text-center">Add Friends</h1>
+    <table class="table table-striped">
+    	<tbody>
+    		<th><center>Send To</center></th>
+    		<th> <center><h2>Full Name</h2> </center></th>
+    {{#each yourFriends}}
+    		<tr>
+    			<td>
+    				<center><h3><input type="checkbox" id="_id"></h3></center>
+    			</td>
+    			<td>
+   				 <center><h3>{{friendname}}</h3></center>
+    			</td>
+    		</tr>
+    {{/each}}
+	   
+    </tbody>
+    </table>
+
+
 </template>

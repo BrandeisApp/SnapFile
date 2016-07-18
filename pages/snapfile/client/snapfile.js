@@ -47,6 +47,16 @@ Template.upload.events({
    }
 });
 
+Template.upload.helpers({
+  yourFriends: function(){
+    return Friends.find({userId:Meteor.userId()}).fetch()
+  },
+  friendname:function(){
+    return Profile.find({userId:this.friendId}).fetch()[0].fullname
+  }
+
+})
+
 if (Meteor.isServer) {
     Meteor.publish("storedfiles", function(){ return StoredFiles.find(); });
 };

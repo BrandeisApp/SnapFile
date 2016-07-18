@@ -4,7 +4,7 @@
 # 'meteor add' and 'meteor remove' will edit this file for you,
 # but you can also edit it by hand.
 
-insecure
+
 twbs:bootstrap
 iron:router
 sacha:spin
@@ -29,7 +29,7 @@ standard-minifier-js
 accounts-google
 underscore
 reactive-dict
-autopublish
+email
 less
 fezvrasta:bootstrap-material-design
 ostrio:files
@@ -39,3 +39,9 @@ cfs:s3
 cfs:gridfs
 http 
 aldeed:http
+
+#to remove
+autopublish
+insecure
+mrt:twilio-meteor
+mrt:moment
