@@ -13,7 +13,7 @@ jparker:gravatar
 ian:accounts-ui-bootstrap-3
 meteor-base
 mobile-experience
-mongo-
+mongo
 blaze-html-templates
 session
 jquery
