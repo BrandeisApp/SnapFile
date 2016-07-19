@@ -48,28 +48,33 @@ Template.upload.events({
    'click #sendfile':function(){
 
     var friends = Friends.find({userId:Meteor.userId()}).fetch()
+   
+    for (var j=0; j<friends.length;j++) {
+      friends[j] = Profile.find({userId:friends[j].friendId}).fetch()[0]
+    }
     var idlist =[]
     var idcounter = 0;
-    if ((Session.get("File")) != undefined) {
-    if (friends.length != 0) {
-    for (var i = 0; i<friends.length; i++) {
+    if ((Session.get("File")) != undefined) {;
+    if (friends.length != 0) {;
+    for (var i = 0; i<friends.length; i++) {console.log(friends[i])
         if (friends[i].phoneverified) {
             if (friends[i].emailverified) {
-          if ($("#"+friends[i].friendId)[0].checked) {
+          if ($("#"+friends[i].userId)[0].checked) {
               if ($("#emailauth")[0].checked) {
-              
-              AuthCode.insert({userId:friends[i].friendId,fileId:Session.get("File"),type:"email"})
-              var emailcode = AuthCode.find({userId:friends[i].friendId,fileId:Session.get("File"),type:"email"}).fetch()._id.split('')
+              AuthCode.insert({userId:friends[i].userId,fileId:Session.get("File"),type:"email"})
+              console.log()
+              var emailcode = (AuthCode.find({userId:friends[i].userId,fileId:Session.get("File"),type:"email"}).fetch()[0]._id).split('')
               emailcode[5] = '`'
               emailcode=emailcode.join('').split("`")[0]
-              Meteor.call("sendEmail",Profile.find(friends[i].friendId).fetch()[0].email,"You have a file availible to download to download at href://localhost:3000/download/"+Session.get("File")+" . Your authorization code is "+emailcode+" .","Download Authorization Code")
+              Meteor.call("sendEmail",Profile.find({userId:friends[i].userId}).fetch()[0].email,"You have a file availible to download to download at href://localhost:3000/download/"+Session.get("File")+" . Your authorization code is "+emailcode+" .","Download Authorization Code")
               }
               if($("#phoneauth")[0].checked) {
-              AuthCode.insert({userId:friends[i].friendId,fileId:Session.get("File"),type:"phone"})
-              var phonecode = AuthCode.find({userId:friends[i].friendId,fileId:Session.get("File"),type:"phone"}).fetch()._id.split('')
+              AuthCode.insert({userId:friends[i].userId,fileId:Session.get("File"),type:"phone"})
+              var phonecode = (AuthCode.find({userId:friends[i].userId,fileId:Session.get("File"),type:"phone"}).fetch()[0]._id).split('')
               phonecode[5] = '`'
               phonecode=phonecode.join('').split("`")[0]
-              Meteor.call("sendText",Profile.find(friends[i].friendId).fetch()[0].email,"You have a file availible to download to download at href://"+"Your authorization code is "+phonecode)
+              alert("5")
+              Meteor.call("sendText",Profile.find({userId:friends[i].userId}).fetch()[0].phonenumber,"You have a file availible to download to download at href://"+"Your authorization code is "+phonecode)
               }
         }
         }
@@ -88,6 +93,9 @@ Template.upload.helpers({
   },
   friendname:function(){
     return Profile.find({userId:this.friendId}).fetch()[0].fullname
+  },
+  currentuser:function(){
+    return Meteor.userId()!=undefined
   }
 
 })
