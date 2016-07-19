@@ -2,6 +2,10 @@ Meteor.startup(function(){
   //console.log("starting up the client!");
 
   //Meteor.absoluteUrl.defaultOptions.rootUrl = 'http://leiner.cs-i.brandeis.edu:3000/';
+/*  WebApp.connectHandlers.use("/", function(req, res, next) {
+    res.setHeader("Set-Cookie", "fileDownload=true; path=/");
+    });
+  console.log(WebApp.connectHandlers);*/
 });
 
 // This helper can be used in any template
@@ -19,6 +23,6 @@ Template.registerHelper('userEmail',
   }
 });
 
+
 // this allows the client access to all the user information
 // this should be removed when the app is deployed
-

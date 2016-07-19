@@ -2,6 +2,7 @@
 Session.set("caneditusername",false);
 Session.set("caneditfirstname",false);
 Session.set("caneditlastname",false);
+Session.set('caneditphonenumber',false);
 Template.profile.rendered= function() {
 	//creates a profile if the user does not have one
 	Meteor.call("profileinsert",Meteor.userId());
@@ -62,6 +63,37 @@ Template.profile.events({
 		Profile.update({_id:toinsert._id},toinsert)
 		//makes the user unable to edit
 		Session.set("caneditlastname",false)
+	},
+	'click #editphonenumber':function(){
+		Session.set("caneditphonenumber",true);
+	},
+	'click #donephonenumber':function(){
+		var toinsert = Profile.find({userId:Meteor.userId()}).fetch()[0]
+		//changes the last name to whatever you changed it to
+		if($("#newphonenumber").val()/1==parseInt($("#newphonenumber").val())&&$("#newphonenumber").val().length>9 ) {
+		toinsert.phonenumber= $("#newphonenumber").val()
+		//changes the full name to whatever you changed it to
+		//puts the new profile onto the server
+		Profile.update({_id:toinsert._id},toinsert)
+		//makes the user unable to edit
+		Session.set("caneditphonenumber",false)
+		}
+		else{
+			alert("invalid phone number")
+		}
+	},
+	'click #verifyphonenumber':function(){
+		alert('request sent')
+		if (Verify.find({userId:Meteor.userId(),type:"phone"}).fetch().length==0) {
+			Verify.insert({userId:Meteor.userId(),type:"phone"})
+		Meteor.call('sendText',Profile.find({userId:Meteor.userId()}).fetch()[0].phonenumber,"Hello "+Profile.find({userId:Meteor.userId()}).fetch()[0].fullname+" your phone verification link is http://129.64.173.221:3000/verify/phone/"+Verify.find({userId:Meteor.userId(),type:"phone"}).fetch()[0]._id)
+	}},
+	'click #verifyemail':function(){
+		alert('request sent')
+		if (Verify.find({userId:Meteor.userId(),type:"email"}).fetch().length==0) {
+			Verify.insert({userId:Meteor.userId(),type:"email"})
+		Meteor.call('sendEmail',Profile.find({userId:Meteor.userId()}).fetch()[0].email,"Hello "+Profile.find({userId:Meteor.userId()}).fetch()[0].fullname+" your email verification link is http://129.64.173.221:3000/verify/email/"+Verify.find({userId:Meteor.userId(),type:"email"}).fetch()[0]._id)
+	}
 	}
 
 
@@ -87,6 +119,9 @@ Template.profile.helpers({
 		//tells the html if you can edit the lastname
 		return Session.get("caneditlastname");
 	},
+	caneditphonenumber:function(){
+		return Session.get("caneditphonenumber");
+	},
 	firstname:function(){
 		//sends user firstname to the html
 		return Profile.find({userId:Meteor.userId()}).fetch()[0].firstname
@@ -107,6 +142,17 @@ Template.profile.helpers({
 		userId= userId.join("")
 		//splits it at ` to gain the first 5 terms
 		return userId.split("`")[0];
+	},
+	phonenumber:function(){
+		return Profile.find({userId:Meteor.userId()}).fetch()[0].phonenumber
+	},
+	phoneverified:function(){
+		return Profile.find({userId:Meteor.userId()}).fetch()[0].phoneverified
+	},
+	emailverified:function(){
+		var toreturn = Profile.find({userId:Meteor.userId()}).fetch()[0].emailverified;
+		console.log(toreturn)
+		return toreturn
 	}
 
 })
