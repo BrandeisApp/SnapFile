@@ -1,4 +1,5 @@
 <template name="friendslist">
+{{#if currentUser}}
 	<!-- button and link to the add friends page-->
 	<a href="{{pathFor 'addfriend'}}">
 	<button class="btn-block btn-warning">
@@ -20,19 +21,14 @@
 {{#each friends}}
 {{>friendsrow}}
 {{/each}}
-
-
-
-
-
-
-
-
 </tbody>
 </table>
 
 
 
+{{else}}
+<h2>You must log in or register</h2>
+{{/if}}
 
 
 

@@ -1,4 +1,5 @@
 <template name="upload">
+{{#if currentUser}}
 	<div style="text-align:center">
 	<h1 class="">Add File</h1>
   	 <center><input class="myFileInput" type="file" value="Upload or drag file here!"></center>
@@ -22,6 +23,9 @@
 	   
     </tbody>
     </table>
+{{else}}
+<h2>You must log in or register</h2>
+{{/if}}
 
 
 </template>

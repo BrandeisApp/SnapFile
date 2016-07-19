@@ -1,6 +1,10 @@
 <template name="download">
+{{#if currentUser}}
 Your download code:<br>
 <input type="text" id="code"><br>
 <button class="js-submit-download">Submit</button><br>
 <div id="outputurl"></div>
+{{else}}
+<h2>You must log in or register</h2>
+{{/if}}
 </template>

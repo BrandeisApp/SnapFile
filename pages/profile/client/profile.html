@@ -1,4 +1,5 @@
 <template name="profile">
+{{#if currentUser}}
 	<!-- creates the table-->
 <table class="table table-striped">
 
@@ -69,6 +70,9 @@
 	{{/if}}
 	</tr>
 	</tbody>
-</table>	
+</table>
+{{else}}
+<h2>You must log in or register</h2>
+{{/if}}	
 
 </template>
