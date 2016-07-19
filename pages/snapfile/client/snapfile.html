@@ -1,3 +1,45 @@
 <template name="upload">
-    <input type="file" class="myFileInput" value="Upload or drag file here!">
+	<div style="text-align:center">
+	<h1 class="">Add File</h1>
+  	 <center><input class="myFileInput" type="file" value="Upload or drag file here!"></center>
+    </div>
+
+    <h1 class="text-center">Add Friends</h1>
+    <table class="table table-striped">
+    	<tbody>
+    		<th><center><h2>Send To</h2></center></th>
+    		<th> <center><h2>Full Name</h2> </center></th>
+    {{#each yourFriends}}
+    		<tr>
+    			<td>
+    				<br>
+    				<center><input style="font-size:200%" type="checkbox" id="recievefile"></center>
+    			</td>
+    			<td>
+   				 <center><h3>{{friendname}}</h3></center>
+    			</td>
+    		</tr>
+    {{/each}}
+	   
+    </tbody>
+    </table>
+
+    <center><h1>Authentication Level</h1></center>
+    <table class="table table-striped"> 
+    <tbody>
+    <tr>
+    <th><h2 class="text-left">Email</h2></th>
+    <th><h2 class="text-right">Phone Number</h2></th>
+    </tr>
+    <tr>
+    <td><input class="text-left" style="font-size:200%" type="checkbox" id="emailauth"></td>
+    <td  class="text-right" ><input style="font-size:200%" type="checkbox" id="phoneauth"></td>
+    </tr>
+    </tbody>	
+    </table>
+
+    <button class="btn btn-success btn-raised btn-block" id="sendfile">
+    <h3>Send</h3>
+    </button>
+
 </template>

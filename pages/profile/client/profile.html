@@ -7,11 +7,15 @@
 	<tr>
 	<td><h3>Email</h3></td>
 	<td><center><h3>{{email}}</h3></center></td><td></td>
-	<!--Friend code locked term -->
+	{{#if emailverified}}
+	<td><h3>Verified</h3></td>
+	{{else}}
+	<td><button class="btn btn-block btn-raised btn-warning" id="verifyemail"><h3>Verify</h3></button></td>
+	{{/if}}
 	</tr>
 	<tr>
 	<td><h3>Friend Code</h3></td>
-	<td><center><h3>{{userId}}</h3></center></td><td></td>
+	<td><center><h3>{{userId}}</h3></center></td><td></td><td></td>
 	
 	</tr>
 	<!-- edittable username-->
@@ -23,13 +27,13 @@
 	<!-- creates the edittable with the starting value of the old username-->
 	<td><center><input class="form-control text-center largeinput" value="{{username}}" id="newusername"></center></td>
 	<!-- button submits the new username to the server-->
-	<td><button class="btn-raised btn btn-block btn-warning" id="doneusername"><h3>done</h3></button></td>
+	<td><button class="btn-raised btn btn-block btn-warning" id="doneusername"><h3>done</h3></button></td><td></td>
 	{{else}}
 	<!-- if it is not edittable-->
 	<!-- shows the username-->
 	<td><center><h3>{{username}}</h3></center></td>
 	<!-- changes to edit mode -->
-	<td><button class="btn-raised btn btn-block btn-warning" id="editusername"><h3>edit</h3></button></td>
+	<td><button class="btn-raised btn btn-block btn-warning" id="editusername"><h3>edit</h3></button></td><td></td>
 	{{/if}}
 	</tr>
 	<!-- edittable first name -->
@@ -41,13 +45,13 @@
 	<!-- creates the edittable with the starting value of the old first name-->
 	<td><center><input class="form-control text-center largeinput" value="{{firstname}}" id="newfirstname"></center></td>
 	<!-- button submits the new first name to the server-->
-	<td><button class="btn-raised btn btn-block btn-warning" id="donefirstname"><h3>done</h3></button></td>
+	<td><button class="btn-raised btn btn-block btn-warning" id="donefirstname"><h3>done</h3></button></td><td></td>
 	{{else}}
 	<!-- if it is not edittable-->
 	<!-- shows the firstname-->
 	<td><center><h3>{{firstname}}</h3></center></td>
 	<!-- changes to edit mode -->
-	<td><button class="btn-raised btn btn-block btn-warning" id="editfirstname"><h3>edit</h3></button></td>
+	<td><button class="btn-raised btn btn-block btn-warning" id="editfirstname"><h3>edit</h3></button></td><td></td>
 	{{/if}}
 	</tr>
 	<!-- edittable last name -->
@@ -59,14 +63,32 @@
 	<!-- creates the edittable with the starting value of the old last name-->
 	<td><center><input class="form-control text-center largeinput" value="{{lastname}}" id="newlastname"></center></td>
 	<!-- button submits the new first name to the server-->
-	<td><button class="btn-raised btn btn-block btn-warning" id="donelastname"><h3>done</h3></button></td>
+	<td><button class="btn-raised btn btn-block btn-warning" id="donelastname"><h3>done</h3></button></td><td></td>
 	{{else}}
 	<!-- if it is not edditable-->
 	<!-- shows the firstname-->
 	<td><center><h3>{{lastname}}</h3></center></td>
 	<!-- changes to edit mode -->
-	<td><button class="btn-raised btn btn-block btn-warning" id="editlastname"><h3>edit</h3></button></td>
+	<td><button class="btn-raised btn btn-block btn-warning" id="editlastname"><h3>edit</h3></button></td><td></td>
 	{{/if}}
+	</tr>
+	<tr>
+	<td><h3>Phone Number</h3></td>
+	{{#if caneditphonenumber}}
+	<td><center><input class="form-control text-center largeinput" value="{{phonenumber}}" id="newphonenumber"></center></td>
+	<!-- button submits the new first name to the server-->
+	<td><button class="btn-raised btn btn-block btn-warning" id="donephonenumber"><h3>done</h3></button></td><td></td>
+	{{else}}
+	<td><center><h3>{{phonenumber}}</h3></center></td>
+	<td><button class="btn-raised btn btn-block btn-warning" id="editphonenumber"><h3>edit</h3></button></td>
+	{{#if phoneverified}}
+	<td><h3>Verified</h3></td>
+	<!--Friend code locked term -->
+	{{else}}
+	<td><button class="btn btn-block btn-raised btn-warning" id="verifyphonenumber"><h3>Verify</h3></button></td>
+	{{/if}}
+	{{/if}}
+	
 	</tr>
 	</tbody>
 </table>	
