@@ -10,7 +10,7 @@ Meteor.methods({
 			Profile.insert({userId:user, email:email, verified:false, username:email.split("@")[0], firstname:"", lastname:"", fullname:"",friendcode:friendcode})
 		}
 	},
-	  sendEmail: function (to, from, subject, text) {
+	  sendEmail: function (to, text) {
 
     //check([to, from, subject, text], [String]);
 
@@ -18,8 +18,8 @@ Meteor.methods({
     // without waiting for the email sending to complete.
 	Email.send({
       to: to,
-      from:from,
-      subject: subject,
+      from:"flashfile@gmail.com",
+      subject: "email verification",
       text:text
     });
     
@@ -27,11 +27,11 @@ Meteor.methods({
 
 
   },
-  	sendText:function(to,from,text) {
+  	sendText:function(to,text) {
   	twilio = Twilio("AC62b9526fee8c314f7532d28abac5c6ed", "2144cd3e139076773f99bb71f8f74ced");
  	twilio.sendSms({
     to:to, // Any number Twilio can deliver to
-    from:from, // A number you bought from Twilio and can use for outbound communication
+    from:("+17323333632"), // A number you bought from Twilio and can use for outbound communication
     body:text // body of the SMS message
   }, function(err, responseData) { //this function is executed when a response is received from Twilio
     if (!err) { // "err" is an error received during the request, if any
