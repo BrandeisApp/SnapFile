@@ -89,13 +89,13 @@ Template.profile.events({
 		alert('request sent')
 		if (Verify.find({userId:Meteor.userId(),type:"phone"}).fetch().length==0) {
 			Verify.insert({userId:Meteor.userId(),type:"phone"})
-		Meteor.call('sendText',Profile.find({userId:Meteor.userId()}).fetch()[0].phonenumber,"Hello "+Profile.find({userId:Meteor.userId()}).fetch()[0].fullname+" your phone verification link is http://129.64.173.221:3000/verify/phone/"+Verify.find({userId:Meteor.userId(),type:"phone"}).fetch()[0]._id)
+		Meteor.call('sendText',Profile.find({userId:Meteor.userId()}).fetch()[0].phonenumber,"Hello "+Profile.find({userId:Meteor.userId()}).fetch()[0].fullname+" your phone verification link is http://turing.cs-i.brandeis.edu:6100/verify/phone/"+Verify.find({userId:Meteor.userId(),type:"phone"}).fetch()[0]._id)
 	}},
 	'click #verifyemail':function(){
 		alert('request sent')
 		if (Verify.find({userId:Meteor.userId(),type:"email"}).fetch().length==0) {
 			Verify.insert({userId:Meteor.userId(),type:"email"})
-		Meteor.call('sendEmail',Profile.find({userId:Meteor.userId()}).fetch()[0].email,"Hello "+Profile.find({userId:Meteor.userId()}).fetch()[0].fullname+" your email verification link is http://129.64.173.221:3000/verify/email/"+Verify.find({userId:Meteor.userId(),type:"email"}).fetch()[0]._id,"email verification")
+		Meteor.call('sendEmail',Profile.find({userId:Meteor.userId()}).fetch()[0].email,"Hello "+Profile.find({userId:Meteor.userId()}).fetch()[0].fullname+" your email verification link is http://turing.cs-i.brandeis.edu:6100/verify/email/"+Verify.find({userId:Meteor.userId(),type:"email"}).fetch()[0]._id,"email verification")
 	}
 	}
 

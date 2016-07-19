@@ -66,7 +66,7 @@ Template.upload.events({
               var emailcode = (AuthCode.find({userId:friends[i].userId,fileId:Session.get("File"),type:"email"}).fetch()[0]._id).split('')
               emailcode[5] = '`'
               emailcode=emailcode.join('').split("`")[0]
-              Meteor.call("sendEmail",Profile.find({userId:friends[i].userId}).fetch()[0].email,"You have a file availible to download to download at href://localhost:3000/download/"+Session.get("File")+" . Your authorization code is "+emailcode+" .","Download Authorization Code")
+              Meteor.call("sendEmail",Profile.find({userId:friends[i].userId}).fetch()[0].email,"You have a file availible to download to download at http://turing.cs-i.brandeis.edu:6100/download/"+Session.get("File")+" . Your authorization code is "+emailcode+" .","Download Authorization Code")
               }
               if($("#phoneauth")[0].checked) {
               AuthCode.insert({userId:friends[i].userId,fileId:Session.get("File"),type:"phone"})
@@ -74,7 +74,7 @@ Template.upload.events({
               phonecode[5] = '`'
               phonecode=phonecode.join('').split("`")[0]
               alert("5")
-              Meteor.call("sendText",Profile.find({userId:friends[i].userId}).fetch()[0].phonenumber,"You have a file availible to download to download at href://"+"Your authorization code is "+phonecode)
+              Meteor.call("sendText",Profile.find({userId:friends[i].userId}).fetch()[0].phonenumber,"You have a file availible to download to download at http://turing.cs-i.brandeis.edu:6100/download/"+Session.get("File")+" Your authorization code is "+phonecode)
               }
         }
         }
