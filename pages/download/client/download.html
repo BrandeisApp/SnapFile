@@ -1,8 +1,14 @@
 <template name="download">
 {{#if currentUser}}
-Your download code:<br>
+{{#if emailverification}}
+{{else}}
+{{/if}}
+{{#if phoneverification}}
+{{else}}
+{{/if}}
+<br>
 <input type="text" class=" form-control text-center" id="code"><br>
-<button class="js-submit-download">Submit</button><br>
+<button class="js-submit-download btn btn-block btn-raised btn-success">Submit</button><br>
 <div id="outputurl"></div>
 {{else}}
 <h2>You must log in or register</h2>

@@ -62,7 +62,7 @@ Template.upload.events({
               var emailcode = AuthCode.find({userId:friends[i].friendId,fileId:Session.get("File"),type:"email"}).fetch()._id.split('')
               emailcode[5] = '`'
               emailcode=emailcode.join('').split("`")[0]
-              Meteor.call("sendEmail",Profile.find(friends[i].friendId).fetch()[0].email,"You have a file availible to download to download at href://localhost:3000/download . Your authorization code is "+emailcode+" .","Download Authorization Code")
+              Meteor.call("sendEmail",Profile.find(friends[i].friendId).fetch()[0].email,"You have a file availible to download to download at href://localhost:3000/download/"+Session.get("File")+" . Your authorization code is "+emailcode+" .","Download Authorization Code")
               }
               if($("#phoneauth")[0].checked) {
               AuthCode.insert({userId:friends[i].friendId,fileId:Session.get("File"),type:"phone"})
