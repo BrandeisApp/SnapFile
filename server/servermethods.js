@@ -10,7 +10,7 @@ Meteor.methods({
 			Profile.insert({userId:user, email:email, verified:false, username:email.split("@")[0], firstname:"", lastname:"", fullname:"",friendcode:friendcode})
 		}
 	},
-	  sendEmail: function (to, text) {
+	  sendEmail: function (to,text,subject) {
 
     //check([to, from, subject, text], [String]);
 
@@ -19,7 +19,7 @@ Meteor.methods({
 	Email.send({
       to: to,
       from:"flashfile@gmail.com",
-      subject: "email verification",
+      subject: subject,
       text:text
     });
     

@@ -71,6 +71,9 @@ Template.profile.events({
 		var toinsert = Profile.find({userId:Meteor.userId()}).fetch()[0]
 		//changes the last name to whatever you changed it to
 		if($("#newphonenumber").val()/1==parseInt($("#newphonenumber").val())&&$("#newphonenumber").val().length>9 ) {
+		if ($("#newphonenumber").val() != toinsert.phonenumber) {
+		toinsert.phoneverified = false;
+	}
 		toinsert.phonenumber= $("#newphonenumber").val()
 		//changes the full name to whatever you changed it to
 		//puts the new profile onto the server
@@ -92,7 +95,7 @@ Template.profile.events({
 		alert('request sent')
 		if (Verify.find({userId:Meteor.userId(),type:"email"}).fetch().length==0) {
 			Verify.insert({userId:Meteor.userId(),type:"email"})
-		Meteor.call('sendEmail',Profile.find({userId:Meteor.userId()}).fetch()[0].email,"Hello "+Profile.find({userId:Meteor.userId()}).fetch()[0].fullname+" your email verification link is http://129.64.173.221:3000/verify/email/"+Verify.find({userId:Meteor.userId(),type:"email"}).fetch()[0]._id)
+		Meteor.call('sendEmail',Profile.find({userId:Meteor.userId()}).fetch()[0].email,"Hello "+Profile.find({userId:Meteor.userId()}).fetch()[0].fullname+" your email verification link is http://129.64.173.221:3000/verify/email/"+Verify.find({userId:Meteor.userId(),type:"email"}).fetch()[0]._id,"email verification")
 	}
 	}
 
