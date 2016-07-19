@@ -40,10 +40,12 @@ Template.upload.events({
               "fileinput.storedfile": "/cfs/files/storedfiles/" + fileObj._id + fileObj.original.name
             };
             Meteor.users.update(userId, {$set: fileURL});
-            prompt("Success! Your code is: " + (fileObj._id) + ", copy it below!", (fileObj._id));
           }
         });
      });
+   },
+   'click #sendfile':function(){
+    
    }
 });
 
