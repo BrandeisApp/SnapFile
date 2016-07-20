@@ -26,7 +26,6 @@ spacebars
 check
 standard-minifier-css
 standard-minifier-js
-accounts-google
 underscore
 reactive-dict
 email
