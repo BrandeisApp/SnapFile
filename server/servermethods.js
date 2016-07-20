@@ -11,7 +11,7 @@ Meteor.methods({
 		}
 	},
 	  sendEmail: function (to,text,subject) {
-
+	  console.log("working")
     //check([to, from, subject, text], [String]);
 
     // Let other method calls from the same client start running,
@@ -30,7 +30,7 @@ Meteor.methods({
   	sendText:function(to,text) {
   	twilio = Twilio("AC62b9526fee8c314f7532d28abac5c6ed", "2144cd3e139076773f99bb71f8f74ced");
  	twilio.sendSms({
-    to:to, // Any number Twilio can deliver to
+    to:(to), // Any number Twilio can deliver to
     from:("+17323333632"), // A number you bought from Twilio and can use for outbound communication
     body:text // body of the SMS message
   }, function(err, responseData) { //this function is executed when a response is received from Twilio

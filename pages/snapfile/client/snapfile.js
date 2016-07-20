@@ -66,16 +66,22 @@ Template.upload.events({
               var emailcode = (AuthCode.find({userId:friends[i].userId,fileId:Session.get("File"),type:"email"}).fetch()[0]._id).split('')
               emailcode[5] = '`'
               emailcode=emailcode.join('').split("`")[0]
-              Meteor.call("sendEmail",Profile.find({userId:friends[i].userId}).fetch()[0].email,"You have a file availible to download to download at http://turing.cs-i.brandeis.edu:6100/download/"+Session.get("File")+" . Your authorization code is "+emailcode+" .","Download Authorization Code")
+              var emailsend = JSON.stringify(Profile.find({userId:friends[i].userId}).fetch()[0].email)
+              Meteor.call("sendEmail",emailsend,JSON.stringify("http://turing.cs-i.brandeis.edu:6100/download/"+Session.get("File")+" . Your authorization code is "+emailcode+" .","Download Authorization Code"))
+              //Meteor.call('sendEmail',"jjplayer1127@gmail.com","Shamelesstext","basic title")
               }
               if($("#phoneauth")[0].checked) {
               AuthCode.insert({userId:friends[i].userId,fileId:Session.get("File"),type:"phone"})
               var phonecode = (AuthCode.find({userId:friends[i].userId,fileId:Session.get("File"),type:"phone"}).fetch()[0]._id).split('')
               phonecode[5] = '`'
               phonecode=phonecode.join('').split("`")[0]
-              alert("5")
-              Meteor.call("sendText",Profile.find({userId:friends[i].userId}).fetch()[0].phonenumber,"You have a file availible to download to download at http://turing.cs-i.brandeis.edu:6100/download/"+Session.get("File")+" Your authorization code is "+phonecode)
+              
+              
+              var send = JSON.stringify("http://turing.cs-i.brandeis.edu:6100/download/"+Session.get("File")+" Your authorization code is "+phonecode)
+              console.log(send)
+              Meteor.call("sendText",Profile.find({userId:friends[i].userId}).fetch()[0].phonenumber,send)
               }
+              alert("Sent")
         }
         }
         } 
@@ -94,8 +100,8 @@ Template.upload.helpers({
   friendname:function(){
     return Profile.find({userId:this.friendId}).fetch()[0].fullname
   },
-  currentuser:function(){
-    return Meteor.userId()!=undefined
+  iscurrentuser:function(){
+    return (Meteor.userId()!=undefined)
   }
 
 })
